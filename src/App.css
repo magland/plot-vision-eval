@@ -1,0 +1,96 @@
+.app {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.main-content {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.plots-section {
+  display: flex;
+  gap: 20px;
+}
+
+.image-selection {
+  width: 120px;
+  overflow-y: auto;
+  padding-right: 16px;
+}
+
+.image-selection .image-display {
+  width: 85px;
+}
+
+.image-selection .image-display img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.image-selection .image-display h3 {
+  font-size: 0.8rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.image-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.image-button {
+  border: none;
+  background: none;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  width: 100px;
+  outline: none;
+}
+
+.image-button:hover {
+  background-color: #f0f0f0;
+}
+
+.image-button.selected {
+  background-color: #e3f2fd;
+}
+
+.image-button:focus {
+  outline: none;
+}
+
+.selected-image {
+  width: 600px;
+  flex-shrink: 0;
+}
+
+.summaries-section {
+  flex: 1;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  margin: 0;
+}
+
+.summaries-grid {
+  display: flex;
+  gap: 20px;
+  width: max-content; /* Ensure content doesn't wrap */
+}
+
+.summary-card {
+  width: 350px;
+  flex-shrink: 0;
+}

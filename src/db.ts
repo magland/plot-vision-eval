@@ -19,7 +19,7 @@ async function initDB(): Promise<IDBDatabase> {
             const summaryStore = db.createObjectStore('summaries', { keyPath: ['modelId', 'imageHash', 'promptHash', 'version'] });
             summaryStore.createIndex('timestamp', 'timestamp', { unique: false });
 
-            const promptStore = db.createObjectStore('prompts', { keyPath: 'imageHash' });
+            db.createObjectStore('prompts', { keyPath: 'imageHash' });
         };
 
         request.onsuccess = () => resolve(request.result);

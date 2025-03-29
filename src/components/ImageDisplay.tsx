@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { PlotImage } from '../types';
 import './ImageDisplay.css';
+import { PlotImage } from '../types';
 
 interface ImageDisplayProps {
     image: PlotImage;

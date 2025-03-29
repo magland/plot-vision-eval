@@ -1,15 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { AIModel, Summary, cachedAISummaryExists } from '../types';
 import './SummaryDisplay.css';
+import { AIModel, Summary } from '../types';
+import { cachedAISummaryExists } from '../db';
 
 interface SummaryDisplayProps {
     models: AIModel[];
     base64Image: string;
+    prompt: string;
     onRequestSummary: (modelId: string) => Promise<string>;
 }
 
-export function SummaryDisplay({ models, base64Image, onRequestSummary }: SummaryDisplayProps) {
+export function SummaryDisplay({ models, base64Image, prompt, onRequestSummary }: SummaryDisplayProps) {
     const [summaries, setSummaries] = useState<Record<string, Summary>>({});
     const [loading, setLoading] = useState<Record<string, boolean>>({});
 
@@ -36,7 +38,7 @@ export function SummaryDisplay({ models, base64Image, onRequestSummary }: Summar
         const checkCachedSummaries = async () => {
             for (const model of models) {
                 try {
-                    const exists = await cachedAISummaryExists(base64Image, model.id);
+                    const exists = await cachedAISummaryExists(base64Image, model.id, prompt);
                     if (exists) {
                         handleRequestSummary(model);
                     }
@@ -49,7 +51,7 @@ export function SummaryDisplay({ models, base64Image, onRequestSummary }: Summar
         // Clear existing summaries when image changes
         setSummaries({});
         checkCachedSummaries();
-    }, [base64Image, models, handleRequestSummary]);
+    }, [base64Image, models, handleRequestSummary, prompt]);
 
     return (
         <div className="summary-display">

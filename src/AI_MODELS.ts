@@ -20,6 +20,10 @@ export const AI_MODELS: AIModel[] = [
     {
         id: "google/gemini-2.5-pro-exp-03-25:free",
         name: "Gemini 2.5 Pro Exp 03-25"
+    },
+    {
+        id: "deepseek/deepseek-chat-v3-0324",
+        name: "DeepSeek Chat V3 0324"
     }
     // {
     //     id: "deepseek/deepseek-r1",
